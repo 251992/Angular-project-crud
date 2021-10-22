@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-4 offset-4">
+        <div class="card">
+            <div class="card-header">
+                <h4>Login Here</h4>
+            </div>
+            <div class="card-body">
+                <form (ngSubmit)="submit()" [formGroup]="formdata" >
+                    <div class="form-group pt-3">
+                        <label for="">User Id</label>
+                        <input type="text" class="form-control" name="userid" formControlName="userid">
+                    <div class="text-danger" *ngIf="formdata.controls.userid.errors?.required && formdata.controls.userid.touched">Login Id required !</div>
+                    </div>
+
+                    <div class="form-group pt-3">
+                        <label for="">User Password</label>
+                        <input type="password" class="form-control" name="password" formControlName="password">
+
+                        <div class="text-danger" *ngIf="formdata.controls.password.errors?.required && formdata.controls.password.touched">Password  required !</div>
+                    </div>
+
+                    <div class="form-group pt-3">
+                       
+                        <input type="submit" class="btn btn-success form-control" name="btn" [disabled]="!formdata.valid">
+                    </div>
+                    <div class="form-group pt-3">
+                        <div class="text-danger">
+                            {{errormessage}}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

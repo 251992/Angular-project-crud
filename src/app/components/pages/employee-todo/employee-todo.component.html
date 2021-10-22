@@ -1,0 +1,73 @@
+
+
+<div class="container">
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card">
+            <div class="card-header">
+                <h4>Employee TODO</h4>
+            </div>
+            <div class="card-body">
+                <form (ngSubmit)="submit()"  [formGroup]="formdata">
+                    <div class="form-group">
+                        <input type="hidden" name="id" formControlName="id">
+                        <input type="text" class="form-control" placeholder="Employee Name" name="name" formControlName="name">
+                    </div>
+                    <div class="form-group">
+                       <select name="dept" id="" class="form-control" formControlName="dept">
+                           <option value="">Select Department</option>
+                           <option value="IT">IT</option>
+                           <option value="HR">HR</option>
+                           <option value="ADMIN">ADMIN</option>
+                       </select>
+                    </div>
+                    <div class="form-group">
+                        <select name="gender" id="" class="form-control"formControlName="gender">
+                            <option value="">Select Gender</option>
+                            <option value="MALE">MALE</option>
+                            <option value="FEMALE">FEMALE</option>
+                            <option value="OTHER">OTHER</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success" [disabled]="!formdata.valid">{{btnText}}</button>
+                        <button class="btn btn-warning">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <table class="table table-bordered table-hover">
+    <thead>
+        <!-- <tr>
+            <th colspan="2">
+                <input type="text" placeholder="Enter text to search" class="form-control" [(ngModel)]="txtFilter">
+            </th>
+            <th></th>
+        </tr> -->
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Dept</th>
+            <th>Gender</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let emp of Employees">
+            <td>{{emp.id}}</td>
+            <td>{{emp.name}}</td>
+            <td>{{emp.dept}}</td>
+            <td>{{emp.gender}}</td>
+            <td>
+                <a href="#" (click)="DeleteEmployee(emp.id)"><fa-icon [icon]="faCoffee"></fa-icon></a>
+                <a href="#" (click)="EditEmployee(emp)"><fa-icon [icon]="faEdit"></fa-icon></a>
+
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+</div>
